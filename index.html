@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anita Kafle | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background-color: #1e1f26;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    .container {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding: 2rem;
+    }
+
+    .slide {
+      max-width: 800px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #ffd166;
+    }
+
+    p {
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    nav {
+      background-color: #333;
+      width: 100%;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    nav a {
+      color: #fff;
+      margin: 0 1rem;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: #ffd166;
+    }
+
+    .profile-img {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      border: 4px solid #fff;
+      margin: 1rem auto;
+      object-fit: cover;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .controls {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+
+    .btn {
+      background-color: #333;
+      color: #fff;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background-color: #ffd166;
+      color: #000;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="slide" id="slide">
+      <!-- Dynamic slide content will be inserted here -->
+    </div>
+
+    <nav>
+      <a href="#" onclick="goToSlide(0)">About</a>
+      <a href="#" onclick="goToSlide(1)">Education</a>
+      <a href="#" onclick="goToSlide(2)">Skills</a>
+      <a href="#" onclick="goToSlide(3)">Projects</a>
+      <a href="#" onclick="goToSlide(4)">Contact</a>
+    </nav>
+
+    <div class="controls">
+      <button class="btn" onclick="prevSlide()">⬅️</button>
+      <button class="btn" onclick="nextSlide()">➡️</button>
+    </div>
+  </div>
+
+  <script>
+    const slides = [
+      `
+        <h1>Anita Kafle</h1>
+        <p><strong>Geomatics Engineering Student</strong><br>Enthusiast of Mapping, Design, and Technology</p>
+        <img src="Anita.jpg" alt="Anita Kafle" class="profile-img">
+        <p>📸 A clean and confident professional photo builds trust and reflects readiness for the real world.</p>
+      `,
+      `
+        <h2>Education</h2>
+        <p><strong>Kathmandu University</strong> - B.E. in Geomatics Engineering (2021–2026)</p>
+        <p>Key Courses: Remote Sensing, GIS, Photogrammetry, Surveying, Web GIS</p>
+        <p><strong>Sanjiwani Model Secondary School</strong> - +2 in Science (2020–2021)</p>
+        <p><strong>Mount View Secondary School</strong> - SEE (2019)</p>
+      `,
+      `
+        <h2>Skills & Certifications</h2>
+        <p>• ArcGIS, AutoCAD, QGIS, GEE<br>
+        • HTML, CSS, JS (Beginner)<br>
+        • Figma UI/UX<br>
+        • Team Collaboration & Report Writing</p>
+      `,
+      `
+        <h2>Projects & Achievements</h2>
+        <p><strong>LULC Mapping</strong>: Satellite image classification in ArcGIS (Kavrepalanchok)</p>
+        <p><strong>Topographic Mapping</strong>: Field survey with GNSS and total station</p>
+        <p><strong>Figma Travel Blog</strong>: UI/UX prototype of travel platform</p>
+        <p><strong>Disaster Mapping</strong>: Landslide analysis via ArcGIS</p>
+      `,
+      `
+        <h2>Contact</h2>
+        <p><strong>Phone:</strong> 9840026029</p>
+        <p><strong>Email:</strong> anitakafle799@gmail.com</p>
+        <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/anitakafle" target="_blank">linkedin.com/in/anitakafle</a></p>
+        <p><strong>Instagram:</strong> <a href="https://www.instagram.com/suminakaflee" target="_blank">@suminakaflee</a></p>
+      `
+    ];
+
+    let current = 0;
+    const slideDiv = document.getElementById('slide');
+
+    function showSlide(index) {
+      current = index;
+      slideDiv.innerHTML = slides[index];
+    }
+
+    function nextSlide() {
+      current = (current + 1) % slides.length;
+      showSlide(current);
+    }
+
+    function prevSlide() {
+      current = (current - 1 + slides.length) % slides.length;
+      showSlide(current);
+    }
+
+    function goToSlide(index) {
+      showSlide(index);
+    }
+
+    showSlide(current);
+  </script>
+</body>
+
+</html>
